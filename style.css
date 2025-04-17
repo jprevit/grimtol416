@@ -2,16 +2,55 @@ body {
     background-color: black;
     image-rendering: pixelated;
     font-family: 'Jacquard 12';
+    color: white;
+    text-shadow: 2px 2px 4px black;
 }
 
-.dungeon {
-    background-image: url(assets/Backgrounds/dungeonbg.png);
+.dungeon,
+.town {
     height: 60vh;
     display: flex;
     align-items: center;
     justify-content: center;
     background-position: center;
     background-size: cover;
+    gap: 1em;
+}
+
+.dungeon {
+    background-image: url(assets/Backgrounds/dungeonbg.png);
+
+}
+
+.town {
+    background-image: url(assets/Backgrounds/townbg.png);
+}
+
+.game-over {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    background-color: tan;
+    width: 30vw;
+    border: outset 4px brown;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: .5em;
+
+    button {
+        width: 60%;
+        background-color: brown;
+        border: outset 2px red;
+        color: white;
+        font-family: 'Jacquard 12';
+        font-size: larger;
+    }
 }
 
 .monster {
@@ -31,8 +70,13 @@ body {
 
 .hero {
     color: white;
-    margin: 10px;
+    margin: 0px;
     border: double gold 5px;
+    position: sticky;
+    bottom: 0px;
+    background-color: black;
+    height: 40vh;
+
 
     img {
         width: 140px;

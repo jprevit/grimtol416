@@ -7,10 +7,14 @@ console.log('howdy 🤠');
 // let bobAttackPower = 2
 // let bobReward = 5
 
+let beerCost = 1
+let bootCost = 2
+
 let hero = {
     name: 'Higginbottom',
     hitPoints: 10,
-    attackPower: 2,
+    maxHitPoints: 10,
+    attackPower: 4,
     gold: 5,
     picture: 'assets/Players/HeroPortrait2.png'
 }
@@ -85,7 +89,7 @@ let monsterList = [
 // Game Logic
 
 function squishMonster() {
-    monster.hitPoints -= hero.attackPower
+    monster.hitPoints -= Math.floor(Math.random() * hero.attackPower)
     console.log(`${monster.name} has ${monster.hitPoints} health remaining.`);
     if (monster.hitPoints <= 0) {
         hero.gold += monster.reward
@@ -98,15 +102,44 @@ function squishMonster() {
     drawMonster()
 }
 
-
 function swapMonster() {
     let nextMonster = monsterList.shift()
     monster = nextMonster
 }
 
 function attackHero() {
-    hero.hitPoints -= monster.attackPower
+    hero.hitPoints -= Math.ceil(Math.random() * monster.attackPower)
     console.log(`Hero hitpoints are ${hero.hitPoints}`);
+
+    if (hero.hitPoints <= 0) {
+        gameOver()
+    }
+}
+
+function buyBoots() {
+
+    if (hero.gold >= bootCost) {
+        hero.gold -= bootCost
+        console.log(`You have ${hero.gold} gold remaining`);
+        hero.attackPower += 3
+        console.log(`Your attack power is now ${hero.attackPower}`);
+        bootCost += hero.attackPower
+    } else {
+        window.alert("You're broke sucka!😭😿")
+    }
+    drawCosts()
+    drawHero()
+}
+
+function buyBeer() {
+    if (hero.gold > beerCost && hero.hitPoints < hero.maxHitPoints) {
+        hero.gold -= beerCost
+        hero.hitPoints += Math.floor(hero.hitPoints / 2)
+    } else {
+        window.alert('No more beer for you!')
+    }
+    drawCosts()
+    drawHero()
 }
 
 // Draw functions
@@ -136,5 +169,25 @@ function drawHero() {
 
 }
 
+function drawCosts() {
+    let bootCostElm = document.getElementById('boot-cost')
+    let beerCostElm = document.getElementById('beer-cost')
+
+    bootCostElm.innerText = `${bootCost}`
+    beerCostElm.innerText = `${beerCost}`
+}
+
+function gameOver() {
+    let game = document.body
+    game.innerHTML = `
+    <div class='game-over'>
+    <h1 > You Died! </h1>
+    </div>
+    `
+
+}
+
+
+drawCosts()
 drawHero()
 drawMonster()
