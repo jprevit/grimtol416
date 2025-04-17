@@ -82,15 +82,34 @@ let monsterList = [
     }
 ]
 
+// Game Logic
+
 function squishMonster() {
-    monster.hitPoints -= 1
-    console.log(`Bob has ${monster.hitPoints} health remaining.`);
+    monster.hitPoints -= hero.attackPower
+    console.log(`${monster.name} has ${monster.hitPoints} health remaining.`);
     if (monster.hitPoints <= 0) {
+        hero.gold += monster.reward
         swapMonster()
+    } else {
+        attackHero()
     }
 
+    drawHero()
     drawMonster()
 }
+
+
+function swapMonster() {
+    let nextMonster = monsterList.shift()
+    monster = nextMonster
+}
+
+function attackHero() {
+    hero.hitPoints -= monster.attackPower
+    console.log(`Hero hitpoints are ${hero.hitPoints}`);
+}
+
+// Draw functions
 
 function drawMonster() {
     let monsterNameElm = document.getElementById('monster-name')
@@ -104,10 +123,18 @@ function drawMonster() {
     monsterImgElm.setAttribute('src', `${monster.picture}`)
 }
 
-function swapMonster() {
-    let nextMonster = monsterList.shift()
+function drawHero() {
+    let heroName = document.getElementById('hero-name')
+    let heroHP = document.getElementById('hero-hit-points')
+    let heroAP = document.getElementById('hero-attack-power')
+    let heroGold = document.getElementById('hero-gold')
 
-    monster = nextMonster
+    heroName.innerText = hero.name
+    heroHP.innerText = `${hero.hitPoints}`
+    heroAP.innerText = `${hero.attackPower}`
+    heroGold.innerText = `${hero.gold}`
+
 }
 
+drawHero()
 drawMonster()
