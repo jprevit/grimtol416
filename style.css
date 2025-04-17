@@ -1,6 +1,7 @@
 body {
     background-color: black;
     image-rendering: pixelated;
+    font-family: 'Jacquard 12';
 }
 
 .monster {
@@ -11,4 +12,10 @@ body {
     img {
         width: 150px
     }
+}
+
+.monster-stats {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
 }

@@ -6,15 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grimtol JS</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=Jacquard+12&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
 
     <section class="dungeon">
 
-        <div class="monster">
+        <div class="monster" onclick="squishMonster()">
             <img src="assets\Monsters\Goblin.png" alt="">
-            <h4>Bob</h4>
+            <h1 id="monster-name"></h1>
+            <div class="monster-stats">
+                <h3>HP:</h3>
+                <h3 id="monster-hit-points"></h3>
+                <h3>Gold:</h3>
+                <h3 id="monster-reward"></h3>
+            </div>
         </div>
 
 
