@@ -7,6 +7,14 @@ console.log('howdy 🤠');
 // let bobAttackPower = 2
 // let bobReward = 5
 
+let hero = {
+    name: 'Higginbottom',
+    hitPoints: 10,
+    attackPower: 2,
+    gold: 5,
+    picture: 'assets/Players/HeroPortrait2.png'
+}
+
 let monster = {
     name: 'Bob',
     hitPoints: 4,
@@ -77,6 +85,10 @@ let monsterList = [
 function squishMonster() {
     monster.hitPoints -= 1
     console.log(`Bob has ${monster.hitPoints} health remaining.`);
+    if (monster.hitPoints <= 0) {
+        swapMonster()
+    }
+
     drawMonster()
 }
 
@@ -84,10 +96,18 @@ function drawMonster() {
     let monsterNameElm = document.getElementById('monster-name')
     let monsterHPElm = document.getElementById('monster-hit-points')
     let monsterGoldElm = document.getElementById('monster-reward')
+    let monsterImgElm = document.getElementById('monster-picture')
 
     monsterNameElm.innerText = monster.name
     monsterHPElm.innerText = `${monster.hitPoints}`
     monsterGoldElm.innerText = `${monster.reward}`
+    monsterImgElm.setAttribute('src', `${monster.picture}`)
+}
+
+function swapMonster() {
+    let nextMonster = monsterList.shift()
+
+    monster = nextMonster
 }
 
 drawMonster()

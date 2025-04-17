@@ -13,12 +13,12 @@
         rel="stylesheet">
 </head>
 
-<body>
+<body class="marg-0">
 
     <section class="dungeon">
 
         <div class="monster" onclick="squishMonster()">
-            <img src="assets\Monsters\Goblin.png" alt="">
+            <img src="assets\Monsters\Goblin.png" alt="" id="monster-picture">
             <h1 id="monster-name"></h1>
             <div class="monster-stats">
                 <h3>HP:</h3>
@@ -29,6 +29,21 @@
         </div>
 
 
+    </section>
+
+    <section class="hero d-flex just-center align-center" id="hero">
+        <img src="assets/Players/HeroPortrait2.png" alt="">
+        <div class="text-center">
+            <h1 class="marg-0" id="hero-name"> PlaceHolder</h1>
+            <div class="d-flex align-center just-center gap" id="hero-stats">
+                <h2>❤️HP:</h2>
+                <h2>10</h2>
+                <h2>🗡️AP:</h2>
+                <h2>2</h2>
+                <h2>🪙Gold:</h2>
+                <h2>5</h2>
+            </div>
+        </div>
     </section>
 
     <script src="app.js"></script>

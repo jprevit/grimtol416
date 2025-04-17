@@ -4,9 +4,18 @@ body {
     font-family: 'Jacquard 12';
 }
 
+.dungeon {
+    background-image: url(assets/Backgrounds/dungeonbg.png);
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-position: center;
+    background-size: cover;
+}
+
 .monster {
     color: white;
-    border: double gold 5px;
     text-align: center;
 
     img {
@@ -17,5 +26,42 @@ body {
 .monster-stats {
     display: flex;
     justify-content: center;
+    gap: 1em;
+}
+
+.hero {
+    color: white;
+    margin: 10px;
+    border: double gold 5px;
+
+    img {
+        width: 140px;
+    }
+}
+
+/* Utility classes */
+
+.d-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.just-center {
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.marg-0 {
+    margin: 0px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.gap {
     gap: 1em;
 }
